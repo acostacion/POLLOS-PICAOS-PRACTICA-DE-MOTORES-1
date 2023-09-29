@@ -61,8 +61,7 @@ public class BulletMovement : MonoBehaviour
     void Start()
     {
         _myTransform = GetComponent<Transform>();
-        //Setup()
-        SetDirection(new Vector3 (1, 0, 0));
+
     }
 
     /// <summary>
