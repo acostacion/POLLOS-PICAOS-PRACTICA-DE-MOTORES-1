@@ -23,6 +23,7 @@ public class ShootingComponent : MonoBehaviour
     /// </summary>
     public void Shoot()
     {
+        // Instancia el prefab de la bala "_bulletPrefab".
         Instantiate(_bulletPrefab);
     }
     #endregion
@@ -32,6 +33,7 @@ public class ShootingComponent : MonoBehaviour
     /// </summary>
     void Start()
     {
+        // Inicializa el _myTransform.
         _myTransform = transform;
 
     }

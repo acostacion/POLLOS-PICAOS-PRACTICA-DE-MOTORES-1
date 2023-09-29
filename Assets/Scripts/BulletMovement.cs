@@ -50,7 +50,7 @@ public class BulletMovement : MonoBehaviour
     /// <param name="direction">Set direction</param>
     public void Setup(Vector2 direction)
     {
-        //Establece la direcciñon inicial "direction".
+        //Establece la dirección inicial de la bala "direction".
         SetDirection(direction);
     }
     #endregion
