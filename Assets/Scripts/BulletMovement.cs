@@ -60,8 +60,9 @@ public class BulletMovement : MonoBehaviour
     /// </summary>
     void Start()
     {
-        _myTransform = GetComponent<Transform>(); 
+        _myTransform = GetComponent<Transform>();
         //Setup()
+        SetDirection(new Vector3 (1, 0, 0));
     }
 
     /// <summary>
@@ -70,9 +71,9 @@ public class BulletMovement : MonoBehaviour
     void Update()
     {
         //Problema _speed
-        //AddSpeed();
-        _myTransform.position =  new Vector3 (_myTransform.position.x + _speed.x, 0);
-        //Debug.Log(_speed);
+        AddSpeed(new Vector3(2,0,0));
+        _myTransform.position += _speed * Time.deltaTime;
+        Debug.Log(_speed);
         
     }
 }
