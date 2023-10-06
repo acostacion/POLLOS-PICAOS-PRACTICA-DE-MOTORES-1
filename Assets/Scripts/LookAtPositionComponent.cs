@@ -8,6 +8,8 @@ public class LookAtPositionComponent : MonoBehaviour
     /// Referene to own transform
     /// </summary>
     private Transform _myTransform;
+    [SerializeField]
+    private Camera _camera;
     #endregion
 
     /// <summary>
@@ -20,8 +22,8 @@ public class LookAtPositionComponent : MonoBehaviour
     #region methods
     public void SetLookAtPosition(Vector3 mousePosition)
     {
-        //El transform mira a la posición "mousePosition".
-        _myTransform.LookAt(mousePosition);
+        _lookAtPosition = _camera.ScreenToWorldPoint(mousePosition);
+
     }
     #endregion
 
@@ -39,7 +41,7 @@ public class LookAtPositionComponent : MonoBehaviour
     /// </summary>
     void Update()
     {
-        SetLookAtPosition(_lookAtPosition);
+        //SetLookAtPosition(_lookAtPosition);
 
         Quaternion rotation = Quaternion.LookRotation
         (_lookAtPosition - transform.position, transform.TransformDirection(Vector3.up));

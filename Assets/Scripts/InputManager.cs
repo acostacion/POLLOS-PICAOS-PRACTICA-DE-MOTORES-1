@@ -25,12 +25,11 @@ public class InputManager : MonoBehaviour
     /// </summary>
     void Update()
     {
-        //_playerLookAt.SetLookAtPosition();
+        _playerLookAt.SetLookAtPosition(Input.mousePosition);
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             _playerShooting.Shoot();
         }
-
 
     }
 }
