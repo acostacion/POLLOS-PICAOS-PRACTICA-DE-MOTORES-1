@@ -75,7 +75,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 36
+  controlID: 115
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -321,7 +321,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/v2
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -329,16 +329,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/v2
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Paula\OneDrive\Documentos\GitHub\POLLOS-PICAOS-PRACTICA-DE-MOTORES-1
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 39.666687}
-    m_SelectedIDs: 34110000
-    m_LastClickedID: 4404
-    m_ExpandedIDs: 00000000b006000088070000c80a00001c0e000078100000ffffff7f
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: cc060000
+    m_LastClickedID: 1740
+    m_ExpandedIDs: 00000000fc050000880700001c0e000078100000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -508,21 +508,21 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 94c9fefff0cafeff24aa0000
+      m_ExpandedIDs: a2c7feffe2c7feff22c8feff62c8feff9ac8feff18c9feff64c9fefff0cafeffb8ab0000f2ab0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Player
-        m_OriginalName: Player
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 43556
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 5}
       m_SearchString: 
@@ -901,9 +901,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -1.1238091, y: 0.33208925, z: 0.016821023}
+    m_Target: {x: 540.86566, y: 183.74863, z: 1.7507924}
     speed: 2
-    m_Value: {x: -1.1238091, y: 0.33208925, z: 0.016821023}
+    m_Value: {x: 540.86566, y: 183.74863, z: 1.7507924}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -953,9 +953,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 8.317896
+    m_Target: 452.05823
     speed: 2
-    m_Value: 8.317896
+    m_Value: 452.05823
   m_Ortho:
     m_Target: 1
     speed: 2

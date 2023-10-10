@@ -41,7 +41,7 @@ public class BulletMovement : MonoBehaviour
     /// <param name="speedToAdd">Speed to be added (vector)</param>
     public void AddSpeed(Vector3 speedToAdd)
     {
-        _speed = (speedToAdd * _speedValue).normalized;
+        _speed = speedToAdd.normalized * _speedValue;
     }
 
     /// <summary>
@@ -51,7 +51,8 @@ public class BulletMovement : MonoBehaviour
     public void Setup(Vector2 direction)
     {
         //Establece la dirección inicial de la bala "direction".
-        SetDirection(direction);
+        //SetDirection(direction);
+        _myTransform.Rotate(direction);
     }
     #endregion
 
@@ -69,7 +70,6 @@ public class BulletMovement : MonoBehaviour
     /// </summary>
     void Update()
     {
-        //Problema _speed
         AddSpeed(new Vector3(2,0,0));
         //_myTransform.position += _speed * Time.deltaTime;
         _myTransform.Translate(_speed * Time.deltaTime);

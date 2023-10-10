@@ -60,7 +60,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         //Se queda por defecto lo que esté en el editor por lo que en un principio esto no haría falta
-        //_mainMenu.SetActive(true);
+        _mainMenu.SetActive(true);
         _victoryScreen.SetActive(false);
         _gameManager = GetComponent<GameManager>();
 

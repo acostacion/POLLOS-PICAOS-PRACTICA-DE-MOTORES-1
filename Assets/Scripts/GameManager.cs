@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void StartMenu()
     {
-        _gameManager.StartMenu();
+        //_UIManager.SetMainMenu();
     }
 
     /// <summary>
