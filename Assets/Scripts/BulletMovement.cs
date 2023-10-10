@@ -41,7 +41,7 @@ public class BulletMovement : MonoBehaviour
     /// <param name="speedToAdd">Speed to be added (vector)</param>
     public void AddSpeed(Vector3 speedToAdd)
     {
-        _speed = speedToAdd.normalized * _speedValue;
+        _speed = (speedToAdd * _speedValue).normalized;
     }
 
     /// <summary>
@@ -71,8 +71,8 @@ public class BulletMovement : MonoBehaviour
     {
         //Problema _speed
         AddSpeed(new Vector3(2,0,0));
-        _myTransform.position += _speed * Time.deltaTime;
-        Debug.Log(_speed);
+        //_myTransform.position += _speed * Time.deltaTime;
+        _myTransform.Translate(_speed * Time.deltaTime);
         
     }
 }
