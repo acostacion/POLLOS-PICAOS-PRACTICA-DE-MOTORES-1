@@ -13,17 +13,19 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Public method used to inform GameManager that the target has been reached
     /// </summary>
-    public void OnTargetReached()
+    public void OnTargetReached() // Cuando se alcanza el objetivo...
     {
-        _gameManager.OnTargetReached();
+        // ... el juego finaliza.
+        GameFinishes();
     }
 
     /// <summary>
     /// Public method used to inform GameManager that the player has clicked Start button
     /// </summary>
-    public void OnPressedStart()
+    public void OnPressedStart() // Al presionar el start...
     {
-        _gameManager.OnPressedStart();
+        // ... el juego comienza.
+        GameStarts();
     }
 
     /// <summary>
@@ -31,7 +33,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void StartMenu()
     {
-        //_UIManager.SetMainMenu();
+        // Llama al UIManager y activa el menú principal cuando se llama a este método.
+        _UIManager.SetMainMenu(true);
     }
 
     /// <summary>
@@ -39,7 +42,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void GameStarts()
     {
-        //TODO
+        // Llama al UIManager para que al presionar start se cierre el menú.
+        _UIManager.SetMainMenu(false);
     }
 
     /// <summary>
@@ -47,7 +51,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void GameFinishes()
     {
-        //TODO
+        // Llama al UIManager para que cuando el juego termine salga la pantalla de victoria.
+        _UIManager.SetVictoryScreen(true);
     }
     #endregion
 
@@ -57,8 +62,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _inputManager = GetComponent<InputManager>();
-        _gameManager = GetComponent<GameManager>();
+        _gameManager = this; // _gameManager = GetComponent<GameManager>();
         _UIManager = GetComponent<UIManager>();
+        StartMenu(); // Inicializa el menú al comienzo del todo.
     }
 }
 

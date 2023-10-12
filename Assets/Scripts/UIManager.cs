@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class UIManager : MonoBehaviour
 {
+    // ¿CÓMO MODIFICAMOS NEWSTATE?
     #region references
     /// <summary>
     /// Reference to Main Menu
@@ -41,7 +42,7 @@ public class UIManager : MonoBehaviour
     /// <param name="newState"></param>
     public void SetMainMenu(bool newState)
     {
-        //_mainMenu.SetActive(!newState);
+        _mainMenu.SetActive(newState);
     }
 
     /// <summary>
@@ -50,7 +51,7 @@ public class UIManager : MonoBehaviour
     /// <param name="newState"></param>
     public void SetVictoryScreen(bool newState)
     {
-        _victoryScreen.SetActive(true);
+        _victoryScreen.SetActive(newState);
     }
     #endregion
 
@@ -59,7 +60,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     void Start()
     {
-        //Se queda por defecto lo que esté en el editor por lo que en un principio esto no haría falta
+        //Creo que deberían quitarse tanto _mainMenu.SetActive(true) y _victoryScreen.SetActive(false) porque es redundante
         _mainMenu.SetActive(true);
         _victoryScreen.SetActive(false);
         _gameManager = GetComponent<GameManager>();
