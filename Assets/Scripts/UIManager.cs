@@ -4,6 +4,7 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     // ¿CÓMO MODIFICAMOS NEWSTATE?
+
     #region references
     /// <summary>
     /// Reference to Main Menu
@@ -32,7 +33,10 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void OnPressStart()
     {
+        // Informa al GameManager que se ha presionado el botón start.
         _gameManager.OnPressedStart();
+
+        // Desactiva el menú principal.
         _mainMenu.SetActive(false);
     }
 
@@ -42,6 +46,7 @@ public class UIManager : MonoBehaviour
     /// <param name="newState"></param>
     public void SetMainMenu(bool newState)
     {
+        // Por medio de "newState" activa o desactiva el menú principal.
         _mainMenu.SetActive(newState);
     }
 
@@ -51,6 +56,7 @@ public class UIManager : MonoBehaviour
     /// <param name="newState"></param>
     public void SetVictoryScreen(bool newState)
     {
+        // Por medio de "newState" activa o desactiva el menú de victoria.
         _victoryScreen.SetActive(newState);
     }
     #endregion
@@ -60,9 +66,14 @@ public class UIManager : MonoBehaviour
     /// </summary>
     void Start()
     {
-        //Creo que deberían quitarse tanto _mainMenu.SetActive(true) y _victoryScreen.SetActive(false) porque es redundante
+        //Creo que deberían quitarse tanto _mainMenu.SetActive(true) y _victoryScreen.SetActive(false) porque es redundante.
+
+        // Muestra el menú principal al inicio.
         _mainMenu.SetActive(true);
+
+        // Oculta el menú de victoria al inicio.
         _victoryScreen.SetActive(false);
+
         _gameManager = GetComponent<GameManager>();
 
     }

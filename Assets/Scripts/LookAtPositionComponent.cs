@@ -23,7 +23,6 @@ public class LookAtPositionComponent : MonoBehaviour
     public void SetLookAtPosition(Vector3 mousePosition)
     {
         _lookAtPosition = _camera.ScreenToWorldPoint(mousePosition);
-
     }
     #endregion
 
@@ -41,6 +40,7 @@ public class LookAtPositionComponent : MonoBehaviour
     /// </summary>
     void Update()
     {
+        // Quizá sea conveniente eliminar esto ya que no se usa.
         //SetLookAtPosition(_lookAtPosition);
 
         Quaternion rotation = Quaternion.LookRotation
