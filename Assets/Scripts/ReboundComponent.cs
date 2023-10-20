@@ -13,17 +13,28 @@ public class ReboundComponent : MonoBehaviour
     /// <param name="collision"></param>
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //NO DETECTA LA COLISION!!!
         Debug.Log("col");
         //Comprobar si esto está bien
         BulletMovement _bullet = collision.collider.GetComponent<BulletMovement>();
 
         if(_bullet != null)
         {
-            //Calcular el 
-            //¿Cuál es la nueva dirección??
-            Vector3 normal = new Vector3(_bullet.transform.position.y, _bullet.transform.position.x, 0);
+
+        
+            // Esto funciona así: el "contacts" es el punto de colisión con el obstáculo, y "[0]" es el primer punto de contacto en un array que tiene (nada mas darle).
+            // El ".normal" saca el vector normal, q es la perpendicular del punto de choque del obstáculo.
+            Vector3 normal = collision.contacts[0].normal;
+
+            // El vector que lleva la bala.
             Vector3 vector = new Vector3(_bullet.transform.position.x, _bullet.transform.position.y, 0);
-            Vector3 _direction = vector - 2 * (vector.x * normal.x + vector.y * normal.y) * normal;
+
+            // Según la API de Unity, "Reflect" hace esto: "Refleja un vector fuera del plano definido por una normalidad.", entonces lo que hay que darle es 
+            // "vector": el vector que se va a reflejar y "normal": la normal de la superficie con respecto a la cual se va a realizar la reflexión.
+            // El vector se normaliza para obtener unicamente su dirección.
+            Vector3 _direction = Vector3.Reflect(vector, normal).normalized; 
+
+            // Establecemos la nueva dirección "direction".
             _bullet.SetDirection(_direction);
         }
     }

@@ -41,6 +41,7 @@ public class BulletMovement : MonoBehaviour
     /// <param name="speedToAdd">Speed to be added (vector)</param>
     public void AddSpeed(Vector3 speedToAdd)
     {
+        // CREO QUE HAY QUE MODIFICAR ESTO PARA EL ATTRACTCOMPONENT.
         _speed = speedToAdd.normalized * _speedValue;
     }
 
