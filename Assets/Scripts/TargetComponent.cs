@@ -17,12 +17,9 @@ public class TargetComponent : MonoBehaviour
     /// <param name="collision">Colliding object</param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Si colisiona con un objeto con la tag "Bullet"...
-        if (collision.CompareTag("Bullet"))
-        {
-            // Informa al Game Manager que el objetivo se ha alcanzado.
-            _gameManager.OnTargetReached();
-        }
+       BulletMovement _bullet = collision.GetComponent<BulletMovement>();
+        
+        if(_bullet != null) { _gameManager.OnTargetReached(); }
     }
     #endregion
 
@@ -32,6 +29,6 @@ public class TargetComponent : MonoBehaviour
     void Start()
     {
         // Referencia al Game Manager.
-        _gameManager = GetComponent<GameManager>();
+        _gameManager = FindObjectOfType<GameManager>();
     }
 }
