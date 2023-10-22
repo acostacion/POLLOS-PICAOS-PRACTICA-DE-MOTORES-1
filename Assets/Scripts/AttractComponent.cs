@@ -7,15 +7,19 @@ public class AttractComponent : MonoBehaviour
     /// <summary>
     /// Parameter to regulate the attraction speed of the attraction area
     /// </summary>
+
     [SerializeField]
     private float _attraction;
     #endregion
+
     #region references
+
     /// <summary>
     /// Reference to own transform
     /// </summary>
     private Transform _myTransform;
     #endregion
+
     /// <summary>
     /// Called when an object stays inside the trigger area.
     /// We will evalate if collided object is a Bullet. Use duck typing!
@@ -24,13 +28,14 @@ public class AttractComponent : MonoBehaviour
     /// <param name="collision">Collided object</param>
     private void OnTriggerStay2D(Collider2D collision)
     {
-        BulletMovement bulletMovement = collision.GetComponent<BulletMovement>();
+        Debug.Log("Atraido");
+        BulletMovement _bullet = collision.GetComponent<BulletMovement>();
 
         // Comprueba si el objeto tiene BulletMovement.
-        if (bulletMovement != null)
+        if (_bullet != null)
         {
             // Si es una bala modifica la velocidad y pone la velocidad de atracción = centro esfera - posición donde ha ocurrido la colisión.
-            bulletMovement.AddSpeed(transform.position - collision.transform.position);
+            _bullet.AddSpeed(transform.position - collision.transform.position);
         }
     }
     /// <summary>

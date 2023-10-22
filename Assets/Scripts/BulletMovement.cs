@@ -29,7 +29,7 @@ public class BulletMovement : MonoBehaviour
     public void SetDirection(Vector3 newDirection)
     {
         //Rota al prefab hacia la dirección "newDirection".
-        _myTransform.Rotate(newDirection);
+        _myTransform.rotation = Quaternion.Euler(newDirection);
     }
 
     /// <summary>
@@ -62,6 +62,7 @@ public class BulletMovement : MonoBehaviour
     /// </summary>
     void Start()
     {
+        AddSpeed(new Vector3(1, 0, 0));
         _myTransform = GetComponent<Transform>();
 
     }
@@ -71,7 +72,7 @@ public class BulletMovement : MonoBehaviour
     /// </summary>
     void Update()
     {
-        AddSpeed(new Vector3(2,0,0));
+        
         //_myTransform.position += _speed * Time.deltaTime;
         _myTransform.Translate(_speed * Time.deltaTime);
         
