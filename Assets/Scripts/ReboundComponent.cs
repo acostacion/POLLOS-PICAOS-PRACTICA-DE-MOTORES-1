@@ -24,8 +24,8 @@ public class ReboundComponent : MonoBehaviour
             //Probar los debugs cuando tenemos el obstaculo en vertical para hacer bien esto
 
             // El vector que lleva la bala.
-            Vector3 vector = new Vector3(_bullet.transform.position.x, _bullet.transform.position.y, 0);
-            
+            Vector3 vector = _bullet.Speed;
+
 
             // Según la API de Unity, "Reflect" hace esto: "Refleja un vector fuera del plano definido por una normalidad.", entonces lo que hay que darle es 
             // "vector": el vector que se va a reflejar y "normal": la normal de la superficie con respecto a la cual se va a realizar la reflexión.
@@ -35,7 +35,6 @@ public class ReboundComponent : MonoBehaviour
             // Establecemos la nueva dirección "direction".
             //Set direction editado
             _bullet.SetDirection(_direction);
-           
         }
     }
     #endregion
