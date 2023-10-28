@@ -1898,7 +1898,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1735559759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2100,7 +2100,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!50 &1831386209
 Rigidbody2D:
   serializedVersion: 4
@@ -2137,8 +2137,8 @@ Transform:
   m_GameObject: {fileID: 1831386208}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.00000046236, y: 2.95, z: 0}
-  m_LocalScale: {x: 0.86949843, y: 1.3864477, z: 1}
+  m_LocalPosition: {x: 0.00000033532, y: 2.95, z: 0}
+  m_LocalScale: {x: 8.499347, y: 0.34661192, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 456627428}
