@@ -33,19 +33,10 @@ public class ReboundComponent : MonoBehaviour
             // La dirección es w = ((n' * d) * n') + ((t * d) * t)
             //                           pn                pt
 
-            Vector3 t = Vector3.Cross(Vector3.forward, -_normal); // t = z (Vector3.forward) x n'
+            float t = Vector3.Dot(_vector, _normal); // t = z (Vector3.forward) x n'
 
-            Vector3 _direction = Vector3.Cross(Vector3.Cross(_vector, -_normal), -_normal) + Vector3.Cross(Vector3.Cross(t, _vector), t);
+            Vector3 _direction = (_vector - (2 * t) * _normal).normalized;
             //                                                    ((d * n')    *    n')    +                               ((t * d) * t)
-
-
-
-
-
-
-
-
-
 
 
             // Según la API de Unity, "Reflect" hace esto: "Refleja un vector fuera del plano definido por una normalidad.", entonces lo que hay que darle es 
