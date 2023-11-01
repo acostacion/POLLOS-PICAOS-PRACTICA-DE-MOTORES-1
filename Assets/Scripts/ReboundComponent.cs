@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 public class ReboundComponent : MonoBehaviour
 {
     #region methods
-
     /// <summary>
     /// This method detects if the collided object is a bullet. Use duck typing!
     /// If it is a bullet, the movement direction is set to fake a rebound on the surface:
@@ -16,50 +14,47 @@ public class ReboundComponent : MonoBehaviour
     {
         BulletMovement _bullet = collision.collider.GetComponent<BulletMovement>();
 
-        if(_bullet != null)
+        //Comprobamos si el objeto que está chocando es una bala
+        if (_bullet != null)
         {
-            // ANTES DE NADA MIRAR EL CÓDIGO CON LA CHULETA DEL PROFE AL LADO.
+            Debug.Log("Colisiona");
+            Vector3 _normal = collision.contacts[0].normal;  
+            //Vector3 _Speed = _bullet.transform.position;
 
-            // Datos: d (_vector), n (_normal), n' (-_normal), t, z, pt, pn.
+            #region Metodo 1
+            //Vector3 z = Vector3.forward;
 
-            // Esto funciona así: el "contacts" es el punto de colisión con el obstáculo, y "[0]" es el primer punto de contacto en un array que tiene (nada mas darle).
-            // El ".normal" saca el vector normal, q es la perpendicular del punto de choque del obstáculo.
-            Vector3 _normal = collision.contacts[0].normal.normalized; // n
-            //Probar los debugs cuando tenemos el obstaculo en vertical para hacer bien esto
+            ////Debug.Log("n: " + _normal + " _speed: " + _direccion);
+            //Vector3 t = Vector3.Cross(z, -_normal).normalized;
 
-            // El vector que lleva la bala.
-            Vector3 _vector = _bullet.Speed; // d
+            //Vector3 pn = Vector3.Dot(-_normal, _direccion) * -_normal;    //Puede ser simplemente la normal negada
+            //Vector3 pt = Vector3.Dot(t, _direccion) * t;
 
-            // La dirección es w = ((n' * d) * n') + ((t * d) * t)
-            //                           pn                pt
+            //Vector3 w = pn + pt;
 
-            float t = Vector3.Dot(_vector, _normal); // t = z (Vector3.forward) x n'
+            //Vector3 _direction = (_vector - (2 * t) * _normal).normalized; // ((d * n')    *    n')+((t * d) * t)
+            #endregion
 
-            Vector3 _direction = (_vector - (2 * t) * _normal).normalized;
-            //                                                    ((d * n')    *    n')    +                               ((t * d) * t)
+            #region Método 2
+            //Vector3 w = _speed - Vector3.Dot(2 * Vector3.Dot(_speed, _normal), _normal) ;
+            #endregion
+
+            #region Metodo 3
+            Vector3 wall = Vector3.Cross(Vector3.forward, _normal);
+
+            float cWall = Vector3.Dot(wall, _bullet.Speed.normalized);
+            float cNormal = Vector3.Dot(_bullet.Speed.normalized, _normal);
+
+            Vector3 reflexion1 = cWall * wall + -(cNormal * _normal);
 
 
-            // Según la API de Unity, "Reflect" hace esto: "Refleja un vector fuera del plano definido por una normalidad.", entonces lo que hay que darle es 
-            // "vector": el vector que se va a reflejar y "normal": la normal de la superficie con respecto a la cual se va a realizar la reflexión.
-            // El vector se normaliza para obtener unicamente su dirección.
-            //Vector3 _direction = Vector3.Reflect(vector, normal);
-            //Vector3 _direction = _vector - 2 * (Vector3.Dot(_vector, _normal) * _normal);
+            #endregion
 
-            // Establecemos la nueva dirección "direction".
-            //Set direction editado
-            //if(_normal == new Vector3(0,1,0))
-            //{
-            //    Debug.Log("pa abajo");
-            //    _direction.y = -_direction.y;
-            //}
+            //Debug.Log(_Speed);
 
-            _bullet.SetDirection(_direction); // w.
+            _bullet.SetDirection(reflexion1.normalized); // w.
 
-            //// Lo del debug.
-            //Debug.DrawRay(_bullet.transform.position, _vector, Color.blue,36000);
-            //Debug.DrawRay(this.transform.position, _normal, Color.red, 36000);
-            //Debug.DrawRay(_bullet.transform.position, _direction, Color.green, 36000);
-            //Debug.Log(_normal);
+            Debug.DrawRay(this.transform.position, _normal, Color.red, 36000);
         }
     }
     #endregion

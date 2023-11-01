@@ -28,10 +28,13 @@ public class BulletMovement : MonoBehaviour
     /// <param name="newDirection">Set direction</param>
     public void SetDirection(Vector3 newDirection)
     {
-        //Lo que hacemos para cambiar de dirección es modificar la velocidad
-        AddSpeed(newDirection);
-        //Rota al prefab hacia la dirección "newDirection".
-        _myTransform.Rotate(_speed);
+        ////Lo que hacemos para cambiar de dirección es modificar la velocidad
+        //AddSpeed(newDirection);
+        ////Rota al prefab hacia la dirección "newDirection".
+        //_myTransform.Rotate(_speed);
+
+        _speed = newDirection.normalized;
+        _speed *= _speedValue;
     }
 
     /// <summary>
@@ -64,6 +67,7 @@ public class BulletMovement : MonoBehaviour
     /// </summary>
     void Start()
     {
+        //Esto habría que cambiarlo creo
         AddSpeed(new Vector3(1, 0, 0));
         _myTransform = GetComponent<Transform>();
 
@@ -75,6 +79,5 @@ public class BulletMovement : MonoBehaviour
     void Update()
     {
         _myTransform.Translate(_speed * Time.deltaTime);
-        
     }
 }
