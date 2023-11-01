@@ -28,14 +28,16 @@ public class AttractComponent : MonoBehaviour
     /// <param name="collision">Collided object</param>
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("Atraido");
-        BulletMovement _bullet = collision.GetComponent<BulletMovement>();
+        BulletMovement bullet = collision.GetComponent<BulletMovement>();
 
-        // Comprueba si el objeto tiene BulletMovement.
-        if (_bullet != null)
+        // Si el objeto es una bala...
+        if (bullet != null)
         {
-            // Si es una bala modifica la velocidad y pone la velocidad de atracción = centro esfera - posición donde ha ocurrido la colisión.
-            _bullet.AddSpeed(transform.position - collision.transform.position);
+            // Calculamos la dirección desde la bala hasta el centro del área de atracción.
+            Vector3 direction = (_myTransform.position - bullet.transform.position).normalized; // Vector dirección = centro área - posición bala. Se normaliza para que la magnitud sea 1.
+
+            // Añadimos la velocidad de atracción a la velocidad actual de la bala.
+            bullet.AddSpeed(bullet.Speed + direction * _attraction);
         }
     }
     /// <summary>
