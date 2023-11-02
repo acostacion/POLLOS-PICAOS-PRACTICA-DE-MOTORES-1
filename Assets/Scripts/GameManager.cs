@@ -13,7 +13,9 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Public method used to inform GameManager that the target has been reached
     /// </summary>
-    public void OnTargetReached() // Cuando se alcanza el objetivo...
+    
+    // Cuando se alcanza el objetivo...
+    public void OnTargetReached() 
     {
         // ... el juego finaliza.
         GameFinishes();

@@ -17,9 +17,8 @@ public class ReboundComponent : MonoBehaviour
         //Comprobamos si el objeto que está chocando es una bala
         if (_bullet != null)
         {
-            Debug.Log("Colisiona");
-            Vector3 _normal = collision.contacts[0].normal;  
-            //Vector3 _Speed = _bullet.transform.position;
+            Vector3 _normal = collision.contacts[0].normal;
+            //Vector3 _speed = _bullet.transform.position;
 
             #region Metodo 1
             //Vector3 z = Vector3.forward;
@@ -27,8 +26,8 @@ public class ReboundComponent : MonoBehaviour
             ////Debug.Log("n: " + _normal + " _speed: " + _direccion);
             //Vector3 t = Vector3.Cross(z, -_normal).normalized;
 
-            //Vector3 pn = Vector3.Dot(-_normal, _direccion) * -_normal;    //Puede ser simplemente la normal negada
-            //Vector3 pt = Vector3.Dot(t, _direccion) * t;
+            //Vector3 pn = Vector3.Dot(-_normal, _speed) * -_normal;    //Puede ser simplemente la normal negada
+            //Vector3 pt = Vector3.Dot(t, _speed) * t;
 
             //Vector3 w = pn + pt;
 
@@ -47,14 +46,11 @@ public class ReboundComponent : MonoBehaviour
 
             Vector3 reflexion1 = cWall * wall + -(cNormal * _normal);
 
-
             #endregion
-
-            //Debug.Log(_Speed);
 
             _bullet.SetDirection(reflexion1.normalized); // w.
 
-            Debug.DrawRay(this.transform.position, _normal, Color.red, 36000);
+            //Debug.DrawRay(this.transform.position, _normal, Color.red, 36000);
         }
     }
     #endregion

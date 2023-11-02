@@ -24,7 +24,9 @@ public class ShootingComponent : MonoBehaviour
     public void Shoot()
     {
         // Instancia el prefab de la bala "_bulletPrefab".
-        Instantiate(_bulletPrefab, _myTransform.position, _myTransform.rotation);
+        //Añadido lo de después del paréntesis -> Setea el vector velocidad incial de la bala 
+        Instantiate(_bulletPrefab, _myTransform.position, _myTransform.rotation).GetComponent<BulletMovement>()
+            .Setup(Camera.main.ScreenToWorldPoint(Input.mousePosition) - _myTransform.position);
     }
     #endregion
 

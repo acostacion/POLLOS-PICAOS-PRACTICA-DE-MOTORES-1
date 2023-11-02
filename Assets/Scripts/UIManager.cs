@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 public class UIManager : MonoBehaviour
 {
-    // ¿CÓMO MODIFICAMOS NEWSTATE?
-
     #region references
     /// <summary>
     /// Reference to Main Menu
@@ -24,6 +22,9 @@ public class UIManager : MonoBehaviour
     /// Reference to GameManager
     /// </summary>
     private GameManager _gameManager;
+
+    //Para poder activar y desactivar el input
+    private InputManager _inputManager;
     #endregion
 
     #region methods
@@ -38,6 +39,10 @@ public class UIManager : MonoBehaviour
 
         // Desactiva el menú principal.
         _mainMenu.SetActive(false);
+
+        //Activamos que el jugador pueda disparar
+        _inputManager.enabled = true;
+
     }
 
     /// <summary>
@@ -68,13 +73,9 @@ public class UIManager : MonoBehaviour
     {
         //Creo que deberían quitarse tanto _mainMenu.SetActive(true) y _victoryScreen.SetActive(false) porque es redundante.
 
-        // Muestra el menú principal al inicio.
-        _mainMenu.SetActive(true);
-
-        // Oculta el menú de victoria al inicio.
-        _victoryScreen.SetActive(false);
-
         _gameManager = GetComponent<GameManager>();
+
+        _inputManager = GetComponent<InputManager>();
 
     }
 }

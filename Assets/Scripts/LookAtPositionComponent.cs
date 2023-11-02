@@ -8,6 +8,7 @@ public class LookAtPositionComponent : MonoBehaviour
     /// Referene to own transform
     /// </summary>
     private Transform _myTransform;
+
     [SerializeField]
     private Camera _camera;
     #endregion

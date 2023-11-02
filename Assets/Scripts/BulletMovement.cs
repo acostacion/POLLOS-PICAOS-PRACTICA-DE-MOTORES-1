@@ -28,11 +28,7 @@ public class BulletMovement : MonoBehaviour
     /// <param name="newDirection">Set direction</param>
     public void SetDirection(Vector3 newDirection)
     {
-        ////Lo que hacemos para cambiar de dirección es modificar la velocidad
-        //AddSpeed(newDirection);
-        ////Rota al prefab hacia la dirección "newDirection".
-        //_myTransform.Rotate(_speed);
-
+        //Cambiamos el vector velocidad por el nuevo y lo multiplicamos por la velocidad
         _speed = newDirection.normalized;
         _speed *= _speedValue;
     }
@@ -46,8 +42,7 @@ public class BulletMovement : MonoBehaviour
     /// <param name="speedToAdd">Speed to be added (vector)</param>
     public void AddSpeed(Vector3 speedToAdd)
     {
-        // CREO QUE HAY QUE MODIFICAR ESTO PARA EL ATTRACTCOMPONENT.
-        _speed = speedToAdd.normalized * _speedValue;
+        _speed += speedToAdd.normalized * _speedValue;
     }
 
     /// <summary>
@@ -56,9 +51,8 @@ public class BulletMovement : MonoBehaviour
     /// <param name="direction">Set direction</param>
     public void Setup(Vector2 direction)
     {
-        //Establece la dirección inicial de la bala "direction".
-        //SetDirection(direction);
-        _myTransform.Rotate(direction);
+        _speed = direction.normalized;
+        _speed *= _speedValue;
     }
     #endregion
 
@@ -67,10 +61,7 @@ public class BulletMovement : MonoBehaviour
     /// </summary>
     void Start()
     {
-        //Esto habría que cambiarlo creo
-        AddSpeed(new Vector3(1, 0, 0));
         _myTransform = GetComponent<Transform>();
-
     }
 
     /// <summary>
@@ -78,6 +69,6 @@ public class BulletMovement : MonoBehaviour
     /// </summary>
     void Update()
     {
-        _myTransform.Translate(_speed * Time.deltaTime);
+        _myTransform.position += _speed * Time.deltaTime;
     }
 }

@@ -28,10 +28,10 @@ public class InputManager : MonoBehaviour
         // Hace que el objeto jugador mire a la posición del ratón.
         _playerLookAt.SetLookAtPosition(Input.mousePosition);
 
-        // Si se presiona clic izquierdo...
+        // Si se presiona clic izquierdo
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            // ... el jugador dispara.
+            // El jugador dispara
             _playerShooting.Shoot();
         }
 
