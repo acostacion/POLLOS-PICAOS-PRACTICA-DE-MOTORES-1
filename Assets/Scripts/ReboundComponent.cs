@@ -14,43 +14,26 @@ public class ReboundComponent : MonoBehaviour
     {
         BulletMovement _bullet = collision.collider.GetComponent<BulletMovement>();
 
-        //Comprobamos si el objeto que está chocando es una bala
+        //Comprobamos si el objeto que está chocando es una bala...
         if (_bullet != null)
         {
+            // Obtenemos la normal del primer punto de contacto de la colisión.
             Vector3 _normal = collision.contacts[0].normal;
-            //Vector3 _speed = _bullet.transform.position;
 
-            #region Metodo 1
-            //Vector3 z = Vector3.forward;
-
-            ////Debug.Log("n: " + _normal + " _speed: " + _direccion);
-            //Vector3 t = Vector3.Cross(z, -_normal).normalized;
-
-            //Vector3 pn = Vector3.Dot(-_normal, _speed) * -_normal;    //Puede ser simplemente la normal negada
-            //Vector3 pt = Vector3.Dot(t, _speed) * t;
-
-            //Vector3 w = pn + pt;
-
-            //Vector3 _direction = (_vector - (2 * t) * _normal).normalized; // ((d * n')    *    n')+((t * d) * t)
-            #endregion
-
-            #region Método 2
-            //Vector3 w = _speed - Vector3.Dot(2 * Vector3.Dot(_speed, _normal), _normal) ;
-            #endregion
-
-            #region Metodo 3
+            // Calculamos el vector perpendicular a la normal y al eje Z (forward).
             Vector3 wall = Vector3.Cross(Vector3.forward, _normal);
 
+            // Calculamos el producto escalar entre el vector wall y la dirección de la bala.
             float cWall = Vector3.Dot(wall, _bullet.Speed.normalized);
+
+            // Calculamos el producto escalar entre la dirección de la bala y la normal.
             float cNormal = Vector3.Dot(_bullet.Speed.normalized, _normal);
 
+            // Calculamos el vector de reflexión.
             Vector3 reflexion1 = cWall * wall + -(cNormal * _normal);
-
-            #endregion
-
-            _bullet.SetDirection(reflexion1.normalized); // w.
-
-            //Debug.DrawRay(this.transform.position, _normal, Color.red, 36000);
+            
+            // Establecemos que la nueva dirección sea el vector reflexión.
+            _bullet.SetDirection(reflexion1.normalized); // w
         }
     }
     #endregion

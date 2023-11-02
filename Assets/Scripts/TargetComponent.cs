@@ -18,8 +18,9 @@ public class TargetComponent : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
        BulletMovement _bullet = collision.GetComponent<BulletMovement>();
-        
-        if(_bullet != null) { _gameManager.OnTargetReached(); }
+
+        // Comprobamos si el objeto que ha entrado en el trigger es una bala...
+        if (_bullet != null) { _gameManager.OnTargetReached(); } // Y llamamos al OnTargetReached.
     }
     #endregion
 

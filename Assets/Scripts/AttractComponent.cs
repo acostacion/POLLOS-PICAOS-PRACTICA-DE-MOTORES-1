@@ -34,12 +34,13 @@ public class AttractComponent : MonoBehaviour
         if (_bullet != null)
         {
             // Calculamos la dirección desde la bala hasta el centro del área de atracción.
-            Vector3 direction = (_myTransform.position - _bullet.transform.position).normalized;
-            // Vector dirección = centro área - posición bala. Se normaliza para que la magnitud sea 1.
+            Vector3 direction = (_myTransform.position - _bullet.transform.position).normalized; // Vector dirección = centro área - posición bala.
+                                                                                                 // Se normaliza para que la magnitud sea 1.
 
             // Añadimos la velocidad de atracción a la velocidad actual de la bala.
-            //bullet.AddSpeed(bullet.Speed + direction * _attraction);
-            _bullet.SetDirection(_bullet.Speed + direction * _attraction);
+            _bullet.SetDirection(_bullet.Speed + direction * _attraction); // Al sumar la dirección a la velocida de bala se está cambiando la trayectoria
+                                                                           // de la bala para que se mueva hacia el centro del área.
+                                                                           // Se multiplica por la atracción para determinar con CUÁNTA fuerza se atrae al centro.
         }
     }
     /// <summary>

@@ -71,12 +71,9 @@ public class UIManager : MonoBehaviour
     /// </summary>
     void Start()
     {
-        //Creo que deberían quitarse tanto _mainMenu.SetActive(true) y _victoryScreen.SetActive(false) porque es redundante.
-
         _gameManager = GetComponent<GameManager>();
 
         _inputManager = GetComponent<InputManager>();
-
     }
 }
 

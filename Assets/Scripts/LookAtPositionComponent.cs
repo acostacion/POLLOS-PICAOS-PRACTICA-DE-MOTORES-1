@@ -41,9 +41,6 @@ public class LookAtPositionComponent : MonoBehaviour
     /// </summary>
     void Update()
     {
-        // Quizá sea conveniente eliminar esto ya que no se usa.
-        //SetLookAtPosition(_lookAtPosition);
-
         Quaternion rotation = Quaternion.LookRotation
         (_lookAtPosition - transform.position, transform.TransformDirection(Vector3.up));
         transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
